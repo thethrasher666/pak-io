@@ -1,0 +1,11 @@
+#
+# Copyright (c) 2026 Jamie Kenyon. All Rights Reserved.
+#
+
+
+# Files to ignore:
+.DS_Store
+
+# Directories to ignore:
+.vs/
+.vscode/

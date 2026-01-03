@@ -1,0 +1,16 @@
+# Example PAK manifest file
+# This demonstrates how to define files to include in a PAK archive
+
+# Manifest format version (mandatory)
+version = "1.0"
+
+# Optional metadata (not currently used by pak-make, but available for future features)
+compression = "lz4"     # Should be "compressed" or "none"
+
+# Define files to include in the archive
+# Each entry is a path string (relative to this TOML file)
+# Wildcards (* and ?) are supported
+files = [
+    "data/*.bin",
+    "data/file5.obj"
+]
