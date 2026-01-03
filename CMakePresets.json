@@ -1,0 +1,152 @@
+{
+    "version": 6,
+    "cmakeMinimumRequired": {
+        "major": 3,
+        "minor": 27,
+        "patch": 0
+    },
+    "configurePresets": [
+        {
+            "name": "base",
+            "hidden": true,
+            "generator": "Ninja",
+            "binaryDir": "${sourceDir}/../builds/${sourceDirName}/${presetName}/build",
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "${presetName}",
+                "CMAKE_INSTALL_PREFIX": "${sourceDir}/../builds/${sourceDirName}/${presetName}/install",
+                "CMAKE_MODULE_PATH": "${sourceDir}/cmake"
+            }
+        },
+        {
+            "name": "Debug",
+            "inherits": [
+                "base"
+            ],
+            "displayName": "Debug",
+            "description": "Debug build."
+        },
+        {
+            "name": "RelWithDebInfo",
+            "inherits": [
+                "base"
+            ],
+            "displayName": "RelWithDebInfo",
+            "description": "Release With Debug build."
+        },
+        {
+            "name": "Release",
+            "inherits": [
+                "base"
+            ],
+            "displayName": "Release",
+            "description": "Release build."
+        }
+    ],
+    "buildPresets": [
+        {
+            "name": "Debug",
+            "configurePreset": "Debug"
+        },
+        {
+            "name": "RelWithDebInfo",
+            "configurePreset": "RelWithDebInfo"
+        },
+        {
+            "name": "Release",
+            "configurePreset": "Release"
+        }
+    ],
+    "testPresets": [
+        {
+            "name": "Debug",
+            "configurePreset": "Debug"
+        },
+        {
+            "name": "RelWithDebInfo",
+            "configurePreset": "RelWithDebInfo"
+        },
+        {
+            "name": "Release",
+            "configurePreset": "Release"
+        }
+    ],
+    "packagePresets": [
+        {
+            "name": "Debug",
+            "configurePreset": "Debug"
+        },
+        {
+            "name": "RelWithDebInfo",
+            "configurePreset": "RelWithDebInfo"
+        },
+        {
+            "name": "Release",
+            "configurePreset": "Release"
+        }
+    ],
+    "workflowPresets": [
+        {
+            "name": "Debug",
+            "steps": [
+                {
+                    "type": "configure",
+                    "name": "Debug"
+                },
+                {
+                    "type": "build",
+                    "name": "Debug"
+                },
+                {
+                    "type": "test",
+                    "name": "Debug"
+                },
+                {
+                    "type": "package",
+                    "name": "Debug"
+                }
+            ]
+        },
+        {
+            "name": "RelWithDebInfo",
+            "steps": [
+                {
+                    "type": "configure",
+                    "name": "RelWithDebInfo"
+                },
+                {
+                    "type": "build",
+                    "name": "RelWithDebInfo"
+                },
+                {
+                    "type": "test",
+                    "name": "RelWithDebInfo"
+                },
+                {
+                    "type": "package",
+                    "name": "RelWithDebInfo"
+                }
+            ]
+        },
+        {
+            "name": "Release",
+            "steps": [
+                {
+                    "type": "configure",
+                    "name": "Release"
+                },
+                {
+                    "type": "build",
+                    "name": "Release"
+                },
+                {
+                    "type": "test",
+                    "name": "Release"
+                },
+                {
+                    "type": "package",
+                    "name": "Release"
+                }
+            ]
+        }
+    ]
+}

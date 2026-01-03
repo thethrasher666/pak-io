@@ -1,0 +1,51 @@
+//
+// Copyright (c) 2026 Jamie Kenyon. All Rights Reserved.
+//
+
+#pragma once
+
+#include <cstdint>
+
+namespace pak
+{
+    /// The major version of the plugin.
+    static uint32_t PAK_VERSION_MAJOR{ @CMAKE_PROJECT_VERSION_MAJOR@ };
+
+    /// The minor version of the plugin.
+    static uint32_t PAK_VERSION_MINOR{ @CMAKE_PROJECT_VERSION_MINOR@ };
+
+    /// Make a version number.
+    /// \param major The major version number.
+    /// \param minor The minor version number.
+    /// \param patch The patch version number.
+    /// \return A version number.
+    [[nodiscard]] static inline auto make_version(uint32_t const major, uint32_t const minor, uint32_t const patch) -> uint32_t
+    {
+        return (major << 22u) | (minor << 12u) | (patch);
+    }
+
+    /// Get the major number from a version number.
+    /// \param version The version number.
+    /// \return The major version number.
+    [[nodiscard]] static inline auto version_major(uint32_t const version) -> uint32_t
+    {
+        return version >> 22u;
+    }
+
+    /// Get the minor number from a version number.
+    /// \param version The version number.
+    /// \return The minor version number.
+    [[nodiscard]] static inline auto version_minor(uint32_t const version) -> uint32_t
+    {
+        return (version >> 12u) & 0x3FFu;
+    }
+
+    /// Determines if a version number is compatible with this build.
+    /// \param version The version number supplied by a plugin.
+    /// \return true if the plugin is compatible with this build; false otherwise.
+    [[nodiscard]] static inline auto is_compatible_version(uint32_t const version)
+    {
+        return version_major(version) == PAK_VERSION_MAJOR && version_minor(version) == PAK_VERSION_MINOR;
+    }
+
+} // namespace pak
