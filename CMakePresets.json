@@ -1,0 +1,86 @@
+{
+    "version": 6,
+    "cmakeMinimumRequired": {
+        "major": 3,
+        "minor": 27,
+        "patch": 0
+    },
+    "configurePresets": [
+        {
+            "name": "base",
+            "hidden": true,
+            "generator": "Ninja",
+            "binaryDir": "${sourceDir}/../builds/${sourceDirName}/${presetName}/build",
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "${presetName}",
+                "CMAKE_INSTALL_PREFIX": "${sourceDir}/../builds/${sourceDirName}/${presetName}/install"
+            }
+        },
+        {
+            "name": "Debug",
+            "inherits": [
+                "base"
+            ],
+            "displayName": "Debug",
+            "description": "Debug build."
+        },
+        {
+            "name": "RelWithDebInfo",
+            "inherits": [
+                "base"
+            ],
+            "displayName": "RelWithDebInfo",
+            "description": "Release With Debug build."
+        },
+        {
+            "name": "Release",
+            "inherits": [
+                "base"
+            ],
+            "displayName": "Release",
+            "description": "Release build."
+        },
+        {
+            "name": "linux-gcc14",
+            "displayName": "Linux - GCC 14",
+            "inherits": "base",
+            "condition": {
+                "type": "equals",
+                "lhs": "${hostSystemName}",
+                "rhs": "Linux"
+            },
+            "cacheVariables": {
+                "CMAKE_C_COMPILER": "gcc-14",
+                "CMAKE_CXX_COMPILER": "g++-14"
+            }
+        }
+    ],
+    "buildPresets": [
+        {
+            "name": "Debug",
+            "configurePreset": "Debug"
+        },
+        {
+            "name": "RelWithDebInfo",
+            "configurePreset": "RelWithDebInfo"
+        },
+        {
+            "name": "Release",
+            "configurePreset": "Release"
+        }
+    ],
+    "testPresets": [
+        {
+            "name": "Debug",
+            "configurePreset": "Debug"
+        },
+        {
+            "name": "RelWithDebInfo",
+            "configurePreset": "RelWithDebInfo"
+        },
+        {
+            "name": "Release",
+            "configurePreset": "Release"
+        }
+    ]
+}

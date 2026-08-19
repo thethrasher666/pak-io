@@ -1,0 +1,12 @@
+# This demonstrates how to define files to include in a PAK file
+
+version = "1.0" # Minimum version of the pak tools required.
+
+# Define files to include in the PAK file, where each entry is a path string (relative to this TOML file)
+files = [
+    "data/file1.obj"
+    "data/file2.obj"
+    "data/file3.obj"
+    "data/file4.obj"
+    "data/file5.obj"
+]

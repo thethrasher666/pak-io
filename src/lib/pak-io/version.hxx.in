@@ -1,0 +1,57 @@
+//
+// Copyright (c) 2026 Jamie Kenyon. All Rights Reserved.
+//
+
+#pragma once
+
+#include <cstdint>
+#include <string>
+
+namespace pk
+{
+    /// Provides access to the versioning information of this application.
+    namespace version
+    {
+        /// Get project major version.
+        /// \return Version information.
+        [[nodiscard]] inline auto major() -> uint32_t
+        {
+            return @PROJECT_VERSION_MAJOR@;
+        }
+
+        /// Get project minor version.
+        /// \return Version information.
+        [[nodiscard]] inline auto minor() -> uint32_t
+        {
+            return @PROJECT_VERSION_MINOR@;
+        }
+
+        /// Get project name.
+        /// \return Version information.
+        [[nodiscard]] inline auto name() -> std::string
+        {
+            return "@CMAKE_PROJECT_NAME@";
+        }
+
+        /// Make an ordinal version number.
+        /// \return Version information.
+        [[nodiscard]] inline auto ordinal() -> uint32_t
+        {
+            return (@PROJECT_VERSION_MAJOR@ << 24) | (@PROJECT_VERSION_MINOR@ << 16) | (@PROJECT_VERSION_PATCH@ << 8) | (@PROJECT_VERSION_TWEAK@ << 0);
+        }
+
+        /// Get project patch version.
+        /// \return Version information.
+        [[nodiscard]] inline auto patch() -> uint32_t
+        {
+            return @PROJECT_VERSION_PATCH@;
+        }
+
+        /// Get project tweak version.
+        /// \return Version information.
+        [[nodiscard]] inline auto tweak() -> uint32_t
+        {
+            return @PROJECT_VERSION_TWEAK@;
+        }
+    } // namespace version
+} // namespace pk
