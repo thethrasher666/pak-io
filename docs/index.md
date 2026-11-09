@@ -13,6 +13,5 @@ One of the practical advantages of using a PAK is **fast asset loading**. Instea
 ## API Overview
 
 - [Class List](annotated.html)
-- [Class Hierarchy](hierarchy.html)
 - [Namespace List](namespaces.html)
 - [File List](files.html)
